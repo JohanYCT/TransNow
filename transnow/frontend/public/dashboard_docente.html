@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel - TransNow</title>
+    <link rel="stylesheet" href="styles/stldashboard.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1>TransNow</h1>
+        <button onclick="logout()">Cerrar sesión</button>
+    </nav>
+
+    <div class="content">
+        <div class="card">
+            <h2>Bienvenido, Usuario 👋</h2>
+            <p>Has iniciado sesión exitosamente</p>
+        </div>
+
+        <div class="card">
+            <h3>Panel académico</h3>
+            <p>Aquí podrás ver tus evaluaciones, retroalimentaciones y estadísticas de aprendizaje.</p>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>

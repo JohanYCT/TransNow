@@ -1,0 +1,106 @@
+/* ===============================
+   ESTILOS PARA SELECCIÓN DE ROL
+   TransNow - 2025
+=================================*/
+
+/* === Fondo general === */
+body.role-body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #2e5bff, #5cc4ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  color: #fff;
+}
+
+/* === Contenedor principal === */
+.role-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 3rem 4rem;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  max-width: 400px;
+  width: 90%;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* === Títulos y texto === */
+.role-container h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.role-container p {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  color: #f0f0f0;
+}
+
+/* === Botones === */
+.role-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.role-btn {
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Botón Docente */
+.role-btn.docente {
+  background-color: #1e40af; /* Azul oscuro */
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
+}
+
+/* Botón Estudiante */
+.role-btn.estudiante {
+  background-color: #0d9488; /* Verde azulado */
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.4);
+}
+
+/* Efecto hover */
+.role-btn:hover {
+  transform: translateY(-5px);
+  opacity: 0.9;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Responsividad === */
+@media (max-width: 480px) {
+  .role-container {
+    padding: 2rem;
+  }
+
+  .role-btn {
+    font-size: 1rem;
+    padding: 0.9rem;
+  }
+}
