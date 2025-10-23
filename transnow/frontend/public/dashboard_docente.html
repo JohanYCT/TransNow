@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel - TransNow</title>
-    <link rel="stylesheet" href="styles/stldashboard.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel del Docente | TransNow</title>
+  <link rel="stylesheet" href="styles/stl_docente.css">
 </head>
-<body>
+<body class="docente-body">
 
-    <nav class="navbar">
-        <h1>TransNow</h1>
-        <button onclick="logout()">Cerrar sesión</button>
-    </nav>
+  <header class="topbar">
+    <h1>👩‍🏫 TransNow - Docente</h1>
+    <button class="logout-btn" onclick="window.location.href='select_rol.html'">Cerrar sesión</button>
+  </header>
 
-    <div class="content">
+  <main class="dashboard">
+    <aside class="sidebar">
+      <ul>
+        <li class="active">🏠 Inicio</li>
+        <li>🧾 Evaluaciones</li>
+        <li>📈 Desempeño de estudiantes</li>
+        <li>💬 Retroalimentaciones</li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <h2>Bienvenido/a, docente 👋</h2>
+      <p>Aquí podrás gestionar evaluaciones, revisar resultados y enviar retroalimentación personalizada.</p>
+
+      <div class="cards">
         <div class="card">
-            <h2>Bienvenido, Usuario 👋</h2>
-            <p>Has iniciado sesión exitosamente</p>
+          <h3>Evaluaciones Pendientes</h3>
+          <p>3 por calificar</p>
         </div>
 
         <div class="card">
-            <h3>Panel académico</h3>
-            <p>Aquí podrás ver tus evaluaciones, retroalimentaciones y estadísticas de aprendizaje.</p>
+          <h3>Promedio General del Curso</h3>
+          <p>4.1 / 5.0</p>
         </div>
-    </div>
 
-    <script>
-        function logout() {
-            window.location.href = "index.html";
-        }
-    </script>
-
+        <div class="card">
+          <h3>Alertas de Desempeño</h3>
+          <p>2 estudiantes con bajo rendimiento ⚠️</p>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

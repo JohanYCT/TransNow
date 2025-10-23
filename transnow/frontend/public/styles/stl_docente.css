@@ -1,0 +1,104 @@
+/* === PANEL DOCENTE - TRANSNOW === */
+
+body.docente-body {
+  font-family: 'Poppins', sans-serif;
+  background: #fefbf6;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* BARRA SUPERIOR */
+.topbar {
+  background: linear-gradient(90deg, #0d9488, #14b8a6);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-btn {
+  background: #0f766e;
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #115e59;
+}
+
+/* DASHBOARD PRINCIPAL */
+.dashboard {
+  display: flex;
+  flex: 1;
+}
+
+/* MENÚ LATERAL */
+.sidebar {
+  background: #0d9488;
+  width: 220px;
+  color: white;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sidebar li:hover,
+.sidebar li.active {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* CONTENIDO PRINCIPAL */
+.content {
+  flex: 1;
+  padding: 2rem;
+}
+
+.content h2 {
+  color: #0f766e;
+  margin-bottom: 1rem;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  flex: 1 1 250px;
+}
+
+.card h3 {
+  color: #0d9488;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: #333;
+  font-size: 1rem;
+}
