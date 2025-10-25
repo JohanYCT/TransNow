@@ -16,34 +16,148 @@
   <main class="dashboard">
     <aside class="sidebar">
       <ul>
-        <li class="active">🏠 Inicio</li>
-        <li>🧾 Evaluaciones</li>
-        <li>📈 Desempeño de estudiantes</li>
-        <li>💬 Retroalimentaciones</li>
+        <li onclick="showSection('inicio')" id="menu-inicio" class="active">🏠 Inicio</li>
+        <li onclick="showSection('evaluaciones')" id="menu-evaluaciones">🧾 Evaluaciones</li>
+        <li onclick="showSection('desempeno')" id="menu-desempeno">📈 Desempeño de estudiantes</li>
+        <li onclick="showSection('retroalimentaciones')" id="menu-retroalimentaciones">💬 Retroalimentaciones</li>
       </ul>
     </aside>
 
     <section class="content">
-      <h2>Bienvenido/a, docente 👋</h2>
-      <p>Aquí podrás gestionar evaluaciones, revisar resultados y enviar retroalimentación personalizada.</p>
+      <div id="inicio-section" class="section-content">
+        <h2>Bienvenido/a, docente 👋</h2>
+        <p>Aquí podrás gestionar evaluaciones, revisar resultados y enviar retroalimentación personalizada.</p>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Evaluaciones Pendientes</h3>
-          <p>3 por calificar</p>
+        <div class="cards">
+          <div class="card">
+            <h3>Evaluaciones Pendientes</h3>
+            <p>3 por calificar</p>
+            <button class="start-activity-btn" onclick="goToEvaluations()">Ir a Evaluaciones</button>
+          </div>
+
+          <div class="card">
+            <h3>Promedio General del Curso</h3>
+            <p>4.1 / 5.0</p>
+          </div>
+
+          <div class="card">
+            <h3>Alertas de Desempeño</h3>
+            <p>2 estudiantes con bajo rendimiento ⚠️</p>
+            <button class="start-activity-btn" onclick="showSection('desempeno')">Ver detalles</button>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Promedio General del Curso</h3>
-          <p>4.1 / 5.0</p>
+        <div class="recent-activity" style="margin-top:1.5rem;">
+          <h3>Actividad Reciente</h3>
+          <ul class="activity-list">
+            <li>
+              <span class="activity-date">24/10/2025</span>
+              <span class="activity-icon">✅</span>
+              <span class="activity-text">Has calificado 5 entregas hoy</span>
+            </li>
+            <li>
+              <span class="activity-date">22/10/2025</span>
+              <span class="activity-icon">📣</span>
+              <span class="activity-text">Recordatorio: publicar retroalimentaciones</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sección: Evaluaciones -->
+      <div id="evaluaciones-section" class="section-content">
+        <h3>Gestión de Evaluaciones</h3>
+        <p>Lista de evaluaciones que puedes crear o calificar.</p>
+
+        <!-- Formulario para crear evaluación -->
+        <div class="card create-eval-card">
+          <h4>Crear nueva evaluación</h4>
+          <div class="create-eval-form">
+            <input id="eval-title" type="text" placeholder="Título de la evaluación" />
+            <textarea id="eval-desc" rows="3" placeholder="Descripción breve"></textarea>
+            <div style="display:flex; gap:0.5rem;">
+              <input id="eval-due" type="date" />
+              <input id="eval-questions" type="number" min="1" placeholder="# preguntas" />
+            </div>
+            <button class="start-activity-btn" onclick="createEvaluation()">Crear evaluación</button>
+          </div>
         </div>
 
+        <!-- Lista dinámica de evaluaciones -->
+        <div class="card" style="margin-top:1rem;">
+          <h4>Evaluaciones existentes</h4>
+          <div id="evaluations-list" class="eval-list"></div>
+        </div>
+      </div>
+
+      <!-- Sección: Desempeño -->
+      <div id="desempeno-section" class="section-content">
+        <h3>Desempeño de Estudiantes</h3>
+        <p>Resumen rápido y herramientas para analizar progreso por estudiante o grupo.</p>
         <div class="card">
-          <h3>Alertas de Desempeño</h3>
-          <p>2 estudiantes con bajo rendimiento ⚠️</p>
+          <h4>Estudiante: Juan Pérez</h4>
+          <p>Promedio: 3.2 - Acción recomendada: Seguimiento</p>
+          <button class="start-activity-btn" onclick="viewStudentReport('Juan Pérez')">Ver reporte</button>
+        </div>
+      </div>
+
+      <!-- Sección: Retroalimentaciones -->
+      <div id="retroalimentaciones-section" class="section-content">
+        <h3>Retroalimentaciones</h3>
+        <p>Escribe y envía retroalimentación a estudiantes.</p>
+        <div class="card feedback-card">
+          <div class="feedback-form">
+            <label for="fb-student">Estudiante:</label>
+            <select id="fb-student">
+              <option>Juan Pérez</option>
+              <option>María Gómez</option>
+            </select>
+
+            <label for="fb-text" style="margin-top:0.6rem;">Mensaje:</label>
+            <textarea id="fb-text" rows="5" placeholder="Escribe la retroalimentación..."></textarea>
+
+            <div class="feedback-actions">
+              <button class="start-activity-btn" onclick="sendFeedback()">Enviar retroalimentación</button>
+              <button class="review-activity-btn" onclick="previewFeedback()">Previsualizar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gestión de Material Complementario -->
+        <div class="card teacher-resource-card" style="margin-top:1rem;">
+          <h4>Material complementario para estudiantes</h4>
+          <div class="resource-form">
+            <label for="res-title">Título</label>
+            <input id="res-title" type="text" placeholder="Título del recurso" />
+
+            <label for="res-link">Enlace</label>
+            <input id="res-link" type="url" placeholder="Enlace (https://...)" />
+
+            <label for="res-desc">Descripción</label>
+            <textarea id="res-desc" rows="2" placeholder="Descripción breve"></textarea>
+
+            <label for="res-area">Área</label>
+            <select id="res-area">
+              <option value="Gramática">Gramática</option>
+              <option value="Vocabulario">Vocabulario</option>
+              <option value="Comprensión">Comprensión</option>
+              <option value="General">General</option>
+            </select>
+
+            <div class="resource-actions">
+              <button class="start-activity-btn" onclick="addResource()">Agregar recurso</button>
+              <button class="review-activity-btn" onclick="loadTeacherResources()">Refrescar</button>
+            </div>
+          </div>
+
+          <div style="margin-top:1rem;">
+            <h5>Recursos compartidos</h5>
+            <div id="teacher-resources-list" class="teacher-resources-list"></div>
+          </div>
         </div>
       </div>
     </section>
   </main>
+  <script src="js/dashboard_docente.js"></script>
 </body>
 </html>
