@@ -13,7 +13,7 @@
     <h1>TransNow</h1>
     <p class="subtitle">Sistema web de evaluación y retroalimentación académica</p>
 
-    <form id="loginForm" action="/dashboard" method="POST">
+    <form id="loginForm" onsubmit="return validateLogin(event)">
       <div class="form-group">
         <label for="email">Correo institucional</label>
         <input type="email" id="email" name="email" placeholder="ejemplo@ucundinamarca.edu.co" required />
@@ -31,6 +31,47 @@
         <a href="#">Registrarse</a>
       </div>
     </form>
+
+    <script>
+      function validateLogin(event) {
+        event.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Verificar que sea un correo institucional
+        if (!email.endsWith('@ucundinamarca.edu.co')) {
+          alert('Por favor, utiliza un correo institucional de la UCundinamarca');
+          return false;
+        }
+
+        // Verificar que la contraseña tenga al menos 6 caracteres
+        if (password.length < 6) {
+          alert('La contraseña debe tener al menos 6 caracteres');
+          return false;
+        }
+
+        // Determinar el rol basado en el correo (temporal)
+        const isTeacher = email.includes('profesor') || email.includes('docente');
+        const role = isTeacher ? 'docente' : 'estudiante';
+
+        // Guardar información en localStorage
+        localStorage.setItem('userRole', role);
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('isAuthenticated', 'true');
+
+        // Redirigir a la página de selección de rol
+        window.location.href = 'select_rol.html';
+        return false;
+      }
+
+      // Verificar si ya hay una sesión activa
+      window.onload = function() {
+        if (localStorage.getItem('isAuthenticated')) {
+          window.location.href = 'select_rol.html';
+        }
+      }
+    </script>
 
     <footer>
       © 2025 TransNow — Proyecto Ingeniería de Sistemas y Computación

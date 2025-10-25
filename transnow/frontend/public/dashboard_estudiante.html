@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel del Estudiante | TransNow</title>
   <link rel="stylesheet" href="styles/stl_estudiante.css">
+  <script src="js/dashboard_estudiante.js"></script>
 </head>
 <body class="estudiante-body">
 
@@ -16,11 +17,396 @@
   <main class="dashboard">
     <aside class="sidebar">
       <ul>
-        <li class="active">🏠 Inicio</li>
-        <li>📊 Mis resultados</li>
-        <li>🧩 Actividades</li>
-        <li>📘 Recomendaciones</li>
+        <li onclick="showSection('inicio')" id="menu-inicio" class="active">🏠 Inicio</li>
+        <li onclick="showSection('resultados')" id="menu-resultados">📊 Mis resultados</li>
+        <li onclick="showSection('actividades')" id="menu-actividades">🧩 Actividades</li>
+        <li onclick="showSection('recomendaciones')" id="menu-recomendaciones">📘 Recomendaciones</li>
       </ul>
     </aside>
 
     <section class="content">
+      <!-- Sección de Inicio -->
+      <div id="inicio-section" class="section-content">
+        <h2>Bienvenido/a, <span id="studentName">estudiante</span> 👋</h2>
+        <p>Aquí podrás ver tus evaluaciones, resultados y recomendaciones personalizadas.</p>
+
+        <div class="cards">
+        <div class="card">
+          <h3>Próximas Evaluaciones</h3>
+          <p class="highlight">2 evaluaciones pendientes</p>
+          <ul class="task-list">
+            <li>📝 Evaluación de Gramática - Fecha límite: 28/10/2025</li>
+            <li>📝 Evaluación de Vocabulario - Fecha límite: 30/10/2025</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Mi Progreso</h3>
+          <div class="progress-stats">
+            <div class="stat">
+              <label>Promedio General</label>
+              <p class="highlight">4.2/5.0</p>
+            </div>
+            <div class="stat">
+              <label>Evaluaciones Completadas</label>
+              <p>8 de 10</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Última Retroalimentación</h3>
+          <div class="feedback">
+            <p class="feedback-date">23/10/2025</p>
+            <p class="feedback-text">"Buen manejo de estructuras gramaticales. Necesita mejorar en el uso de conectores."</p>
+            <p class="feedback-subject">- Evaluación de Redacción</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="recent-activity">
+        <h3>Actividad Reciente</h3>
+        <ul class="activity-list">
+          <li>
+            <span class="activity-date">24/10/2025</span>
+            <span class="activity-icon">✅</span>
+            <span class="activity-text">Completaste la evaluación de Comprensión Lectora</span>
+          </li>
+          <li>
+            <span class="activity-date">22/10/2025</span>
+            <span class="activity-icon">📊</span>
+            <span class="activity-text">Nueva retroalimentación disponible</span>
+          </li>
+          <li>
+            <span class="activity-date">20/10/2025</span>
+            <span class="activity-icon">🎯</span>
+            <span class="activity-text">Alcanzaste el 80% de tu meta mensual</span>
+          </li>
+        </ul>
+      </div>
+      </div>
+
+      <!-- Sección de Resultados -->
+      <div id="resultados-section" class="section-content">
+        <h2>Mis Resultados 📊</h2>
+        <p>Revisa el detalle de tus evaluaciones y progreso académico.</p>
+
+        <div class="results-overview">
+          <div class="result-card">
+            <h3>Resumen General</h3>
+            <div class="progress-circle">
+              <div class="progress-value">85%</div>
+              <div class="progress-label">Promedio</div>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-label">Total Evaluaciones</span>
+                <span class="stat-value">15</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Completadas</span>
+                <span class="stat-value">12</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <h3>Últimas Calificaciones</h3>
+            <div class="grades-list">
+              <div class="grade-item">
+                <div class="grade-info">
+                  <span class="grade-title">Evaluación de Gramática</span>
+                  <span class="grade-date">20/10/2025</span>
+                </div>
+                <div class="grade-score high">4.5</div>
+              </div>
+              <div class="grade-item">
+                <div class="grade-info">
+                  <span class="grade-title">Evaluación de Vocabulario</span>
+                  <span class="grade-date">18/10/2025</span>
+                </div>
+                <div class="grade-score medium">3.8</div>
+              </div>
+              <div class="grade-item">
+                <div class="grade-info">
+                  <span class="grade-title">Comprensión Lectora</span>
+                  <span class="grade-date">15/10/2025</span>
+                </div>
+                <div class="grade-score high">4.7</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detailed-results">
+          <h3>Análisis por Habilidades</h3>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <div class="skill-header">
+                <span class="skill-icon">📝</span>
+                <h4>Gramática</h4>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" style="width: 85%"></div>
+              </div>
+              <span class="skill-percentage">85%</span>
+              <div class="skill-feedback">
+                <h5>Historial de Retroalimentación</h5>
+                <div class="feedback-history">
+                  <div class="feedback-item">
+                    <span class="feedback-date">24/10/2025</span>
+                    <p>"Excelente uso de tiempos verbales. Mejorar concordancia sujeto-verbo."</p>
+                  </div>
+                  <div class="feedback-item">
+                    <span class="feedback-date">20/10/2025</span>
+                    <p>"Buen manejo de estructuras básicas. Atención a preposiciones."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-header">
+                <span class="skill-icon">🗣️</span>
+                <h4>Vocabulario</h4>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" style="width: 75%"></div>
+              </div>
+              <span class="skill-percentage">75%</span>
+              <div class="skill-feedback">
+                <h5>Historial de Retroalimentación</h5>
+                <div class="feedback-history">
+                  <div class="feedback-item">
+                    <span class="feedback-date">23/10/2025</span>
+                    <p>"Buen uso de sinónimos. Reforzar vocabulario técnico."</p>
+                  </div>
+                  <div class="feedback-item">
+                    <span class="feedback-date">19/10/2025</span>
+                    <p>"Mejorar uso de conectores y frases idiomáticas."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-header">
+                <span class="skill-icon">📚</span>
+                <h4>Comprensión</h4>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" style="width: 90%"></div>
+              </div>
+              <span class="skill-percentage">90%</span>
+              <div class="skill-feedback">
+                <h5>Historial de Retroalimentación</h5>
+                <div class="feedback-history">
+                  <div class="feedback-item">
+                    <span class="feedback-date">22/10/2025</span>
+                    <p>"Excelente comprensión de ideas principales. Seguir así."</p>
+                  </div>
+                  <div class="feedback-item">
+                    <span class="feedback-date">18/10/2025</span>
+                    <p>"Muy buena interpretación de contextos complejos."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección de Actividades -->
+      <div id="actividades-section" class="section-content">
+        <h2>Mis Actividades 🧩</h2>
+        <p>Aquí encontrarás todas tus actividades y ejercicios de práctica.</p>
+
+        <div class="activities-container">
+          <!-- Actividades Pendientes -->
+          <div class="activities-section">
+            <h3>Actividades Pendientes</h3>
+            <div class="activities-grid">
+              <div class="activity-card">
+                <div class="activity-status pending">Pendiente</div>
+                <div class="activity-icon">📝</div>
+                <h4>Ejercicios de Gramática</h4>
+                <p>Práctica de tiempos verbales y estructuras gramaticales</p>
+                <div class="activity-meta">
+                  <span class="difficulty">Dificultad: Media</span>
+                  <span class="estimated-time">20 min</span>
+                </div>
+                <button class="start-activity-btn">Comenzar</button>
+              </div>
+
+              <div class="activity-card">
+                <div class="activity-status pending">Pendiente</div>
+                <div class="activity-icon">🗣️</div>
+                <h4>Vocabulario Técnico</h4>
+                <p>Ejercicios de vocabulario especializado y términos técnicos</p>
+                <div class="activity-meta">
+                  <span class="difficulty">Dificultad: Alta</span>
+                  <span class="estimated-time">30 min</span>
+                </div>
+                <button class="start-activity-btn">Comenzar</button>
+              </div>
+
+              <div class="activity-card">
+                <div class="activity-status pending">Pendiente</div>
+                <div class="activity-icon">📚</div>
+                <h4>Comprensión de Textos</h4>
+                <p>Lectura y análisis de documentos técnicos</p>
+                <div class="activity-meta">
+                  <span class="difficulty">Dificultad: Media</span>
+                  <span class="estimated-time">25 min</span>
+                </div>
+                <button class="start-activity-btn">Comenzar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actividades Completadas -->
+          <div class="activities-section">
+            <h3>Actividades Completadas</h3>
+            <div class="activities-grid">
+              <div class="activity-card completed">
+                <div class="activity-status completed">Completado</div>
+                <div class="activity-icon">✅</div>
+                <h4>Práctica de Conectores</h4>
+                <p>Ejercicios de conectores y transiciones</p>
+                <div class="activity-meta">
+                  <span class="score">Puntuación: 90%</span>
+                  <span class="completion-date">24/10/2025</span>
+                </div>
+                <button class="review-activity-btn">Revisar</button>
+              </div>
+
+              <div class="activity-card completed">
+                <div class="activity-status completed">Completado</div>
+                <div class="activity-icon">✅</div>
+                <h4>Vocabulario Básico</h4>
+                <p>Ejercicios de vocabulario general</p>
+                <div class="activity-meta">
+                  <span class="score">Puntuación: 85%</span>
+                  <span class="completion-date">22/10/2025</span>
+                </div>
+                <button class="review-activity-btn">Revisar</button>
+              </div>
+
+              <div class="activity-card completed">
+                <div class="activity-status completed">Completado</div>
+                <div class="activity-icon">✅</div>
+                <h4>Lectura Comprensiva</h4>
+                <p>Ejercicios de comprensión de lectura</p>
+                <div class="activity-meta">
+                  <span class="score">Puntuación: 95%</span>
+                  <span class="completion-date">20/10/2025</span>
+                </div>
+                <button class="review-activity-btn">Revisar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección de Recomendaciones -->
+      <div id="recomendaciones-section" class="section-content">
+        <h2>Recomendaciones 📘</h2>
+        <p>Sugerencias personalizadas basadas en tu desempeño reciente.</p>
+
+        <div class="recommendations-container">
+          <div class="recommendations-grid">
+            <!-- Recomendaciones de Gramática -->
+            <div class="recommendation-card">
+              <div class="recommendation-header">
+                <span class="recommendation-icon">📝</span>
+                <h3>Gramática</h3>
+              </div>
+              <div class="recommendations-list">
+                <div class="recommendation-item">
+                  <span class="priority high">Alta Prioridad</span>
+                  <p>Practicar conjugación de verbos irregulares en pasado</p>
+                  <a href="#" class="resource-link">Ver ejercicios relacionados →</a>
+                </div>
+                <div class="recommendation-item">
+                  <span class="priority medium">Media Prioridad</span>
+                  <p>Repasar el uso de preposiciones en contextos técnicos</p>
+                  <a href="#" class="resource-link">Ver material de estudio →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recomendaciones de Vocabulario -->
+            <div class="recommendation-card">
+              <div class="recommendation-header">
+                <span class="recommendation-icon">🗣️</span>
+                <h3>Vocabulario</h3>
+              </div>
+              <div class="recommendations-list">
+                <div class="recommendation-item">
+                  <span class="priority high">Alta Prioridad</span>
+                  <p>Ampliar vocabulario técnico del área de ingeniería</p>
+                  <a href="#" class="resource-link">Explorar glosario técnico →</a>
+                </div>
+                <div class="recommendation-item">
+                  <span class="priority medium">Media Prioridad</span>
+                  <p>Practicar uso de conectores y frases de transición</p>
+                  <a href="#" class="resource-link">Ver ejercicios →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recomendaciones de Comprensión -->
+            <div class="recommendation-card">
+              <div class="recommendation-header">
+                <span class="recommendation-icon">📚</span>
+                <h3>Comprensión</h3>
+              </div>
+              <div class="recommendations-list">
+                <div class="recommendation-item">
+                  <span class="priority medium">Media Prioridad</span>
+                  <p>Practicar lectura de documentación técnica avanzada</p>
+                  <a href="#" class="resource-link">Ver lecturas recomendadas →</a>
+                </div>
+                <div class="recommendation-item">
+                  <span class="priority low">Baja Prioridad</span>
+                  <p>Mantener práctica con textos de complejidad media</p>
+                  <a href="#" class="resource-link">Ver material complementario →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recursos Adicionales -->
+          <div class="additional-resources">
+            <h3>Recursos Sugeridos</h3>
+            <div class="resources-grid">
+              <div class="resource-card">
+                <span class="resource-icon">📖</span>
+                <div class="resource-content">
+                  <h4>Guía de Gramática Avanzada</h4>
+                  <p>Manual completo con ejercicios prácticos</p>
+                  <button class="resource-btn">Acceder al recurso</button>
+                </div>
+              </div>
+              <div class="resource-card">
+                <span class="resource-icon">🎯</span>
+                <div class="resource-content">
+                  <h4>Ejercicios Personalizados</h4>
+                  <p>Basados en tus áreas de mejora</p>
+                  <button class="resource-btn">Comenzar práctica</button>
+                </div>
+              </div>
+              <div class="resource-card">
+                <span class="resource-icon">🔍</span>
+                <div class="resource-content">
+                  <h4>Glosario Técnico Interactivo</h4>
+                  <p>Términos específicos de tu campo</p>
+                  <button class="resource-btn">Explorar glosario</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</body>
