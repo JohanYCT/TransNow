@@ -10,6 +10,15 @@ window.onload = function() {
     showSection('inicio');
 }
 
+// Función para cerrar sesión
+function logout() {
+    localStorage.clear(); // Limpiar todos los datos de sesión
+    window.location.href = 'index.html';
+}
+
+// Exponer función logout globalmente
+window.logout = logout;
+
 // Función para mostrar las diferentes secciones
 function showSection(sectionId) {
     // Ocultar todas las secciones primero
