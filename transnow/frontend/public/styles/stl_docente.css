@@ -79,10 +79,10 @@ body.docente-body {
 }
 
 .cards {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  margin-top: 1rem;
+  margin: 2rem 0;
 }
 
 .card {
@@ -90,15 +90,383 @@ body.docente-body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   border-radius: 12px;
-  flex: 1 1 250px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(229,231,235,1); /* similar subtle border */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .card h3 {
   color: #0d9488;
-  margin-bottom: 0.5rem;
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .card p {
   color: #333;
-  font-size: 1rem;
+  line-height: 1.6;
 }
+
+/* Secciones controladas por JS (inicialmente ocultas) */
+.section-content {
+  width: 100%;
+  display: none; /* Todas las secciones inician ocultas */
+}
+
+.section-content.active {
+  display: block;
+}
+
+/* Actividad reciente (estructura similar a estudiantes) */
+.recent-activity {
+  margin-top: 2.5rem;
+}
+
+.recent-activity h3 {
+  color: #0f766e;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activity-list li {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  border: 1px solid rgba(229,231,235,1);
+  transition: all 0.3s ease;
+}
+
+.activity-list li:hover {
+  transform: translateX(5px);
+  border-color: #0d9488;
+}
+
+.activity-date {
+  color: #64748b;
+  font-size: 0.9rem;
+  min-width: 100px;
+}
+
+.activity-icon {
+  margin: 0 1rem;
+  font-size: 1.2rem;
+}
+
+.activity-text {
+  color: #333;
+  flex: 1;
+}
+
+/* Botones reutilizables (alineados con plataforma) */
+.start-activity-btn, .review-activity-btn {
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.start-activity-btn {
+  background: #2563eb; /* color plataforma */
+  color: white;
+}
+
+.start-activity-btn:hover { background: #1e40af; }
+
+.review-activity-btn {
+  background: #e5e7eb;
+  color: #0f766e;
+}
+
+.review-activity-btn:hover { background: #d1d5db; }
+
+/* Formulario de creación de evaluaciones */
+.create-eval-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.create-eval-form input[type="text"],
+.create-eval-form textarea, 
+.create-eval-form input[type="date"],
+.create-eval-form select {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  background: white;
+}
+
+/* Estilos para preguntas */
+.question-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.question-header {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.question-text {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.remove-question,
+.remove-option {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  padding: 0;
+  line-height: 1;
+}
+
+.remove-question:hover,
+.remove-option:hover {
+  background: #dc2626;
+}
+
+/* Opciones de respuesta */
+.options-container {
+  margin-left: 1rem;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.option-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.option-text {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.option-correct {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  margin: 0;
+  accent-color: #2563eb;
+}
+
+.option-item input[type="radio"] {
+  margin: 0;
+  width: 18px;
+  height: 18px;
+  position: relative;
+  cursor: pointer;
+}
+
+.option-item input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #2563eb;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.add-option {
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  padding: 0.4rem 0;
+  font-size: 0.9rem;
+}
+
+.add-option:hover {
+  text-decoration: underline;
+}
+
+/* Estados vacíos */
+.empty-state {
+  color: #64748b;
+  text-align: center;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px dashed #e2e8f0;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #64748b;
+}
+
+.eval-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.eval-item {
+  padding: 0.7rem;
+  border-radius: 8px;
+  background: #fbfdff;
+  border: 1px solid #e6eefc;
+}
+
+/* Estilos específicos para retroalimentaciones (docente) */
+.feedback-card {
+  background: linear-gradient(180deg, #ffffff, #fbfbff);
+  border-left: 4px solid #2563eb;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.feedback-form label {
+  font-weight: 600;
+  color: #0f766e;
+}
+
+#retroalimentaciones-section .feedback-form select,
+#retroalimentaciones-section .feedback-form input[type="url"] {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: white;
+}
+
+#retroalimentaciones-section .feedback-form textarea {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  min-height: 120px;
+  resize: vertical;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
+  background: #fff;
+  font-size: 0.95rem;
+}
+
+.feedback-actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+}
+
+.feedback-actions .start-activity-btn {
+  padding: 0.55rem 0.9rem;
+}
+
+.feedback-actions .review-activity-btn {
+  padding: 0.55rem 0.9rem;
+}
+
+/* Mejora visual de select en feedback */
+#retroalimentaciones-section .feedback-form select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #64748b 50%), linear-gradient(135deg, #64748b 50%, transparent 50%);
+  background-position: calc(100% - 1.2rem) calc(1em + 2px), calc(100% - 0.9rem) calc(1em + 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 2.2rem;
+}
+
+/* Estilos para gestión de recursos del docente */
+.teacher-resource-card {
+  background: linear-gradient(180deg, #ffffff, #fcfdfc);
+  border-left: 4px solid #0d9488;
+}
+
+.resource-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.resource-form label {
+  font-weight: 600;
+  color: #0f766e;
+}
+
+.resource-form input[type="text"],
+.resource-form input[type="url"],
+.resource-form textarea, .resource-form select {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: white;
+}
+
+.resource-actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  margin-top: 0.25rem;
+}
+
+.teacher-resources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.teacher-resources-list .eval-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.teacher-resources-list .resource-link {
+  color: #2563eb;
+  text-decoration: none;
+  margin-right: 0.5rem;
+}
+
+.teacher-resources-list .resource-link:hover { text-decoration: underline; }
+
+/* Alinear paleta con la interfaz del estudiante */
+.topbar { background: linear-gradient(90deg, #2563eb, #60a5fa); }
+.sidebar { background: #2563eb; }
+.sidebar li:hover, .sidebar li.active { background: rgba(255,255,255,0.18); }

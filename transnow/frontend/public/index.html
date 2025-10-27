@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TransNow | Sistema de Análisis Educativo</title>
-<link rel="stylesheet" href="styles/stl_login.css"/>
+  <link rel="icon" href="img/Logo.png" type="image/png">
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="stylesheet" href="styles/stl_login.css"/>
 </head>
 <body>
   <div class="login-container">
@@ -13,10 +15,10 @@
     <h1>TransNow</h1>
     <p class="subtitle">Sistema web de evaluación y retroalimentación académica</p>
 
-    <form id="loginForm" action="/dashboard" method="POST">
+    <form id="loginForm" onsubmit="return validateLogin(event)">
       <div class="form-group">
-        <label for="email">Correo institucional</label>
-        <input type="email" id="email" name="email" placeholder="ejemplo@ucundinamarca.edu.co" required />
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="ejemplo@gmail.com" required />
       </div>
 
       <div class="form-group">
@@ -31,6 +33,35 @@
         <a href="#">Registrarse</a>
       </div>
     </form>
+
+    <script>
+      function validateLogin(event) {
+        event.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Verificar que sea un correo Gmail
+        if (!email.endsWith('@gmail.com')) {
+          alert('Por favor, utiliza un correo de Gmail');
+          return false;
+        }
+
+        // Verificar que la contraseña tenga al menos 6 caracteres
+        if (password.length < 6) {
+          alert('La contraseña debe tener al menos 6 caracteres');
+          return false;
+        }
+
+        // Determinar el rol basado en el correo (temporal)
+        const isTeacher = email.includes('profesor') || email.includes('docente');
+        const role = isTeacher ? 'docente' : 'estudiante';
+
+        // Redirigir a la página de selección de rol
+        window.location.href = 'select_rol.html';
+        return false;
+      }
+    </script>
 
     <footer>
       © 2025 TransNow — Proyecto Ingeniería de Sistemas y Computación

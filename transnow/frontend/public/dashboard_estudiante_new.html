@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel del Estudiante | TransNow</title>
-  <link rel="icon" href="img/Logo.png" type="image/png">
-  <meta name="theme-color" content="#ffffff" />
   <link rel="stylesheet" href="styles/stl_estudiante.css">
   <script src="js/dashboard_estudiante.js"></script>
 </head>
@@ -42,37 +40,15 @@
           </div>
 
           <div class="card">
-            <h3>Mi Progreso por Materias</h3>
-            <div class="subject-progress-mini">
-              <div class="subject-row">
-                <span class="subject-icon">🔢</span>
-                <span class="subject-name">Matemáticas</span>
-                <div class="subject-mini-stats">
-                  <div class="progress-bar" style="width: 100px">
-                    <div class="progress-fill" style="width: 0%"></div>
-                  </div>
-                  <span class="progress-text">0%</span>
-                </div>
+            <h3>Mi Progreso</h3>
+            <div class="progress-stats">
+              <div class="stat">
+                <label>Promedio General</label>
+                <p class="highlight">0.0/5.0</p>
               </div>
-              <div class="subject-row">
-                <span class="subject-icon">⚡</span>
-                <span class="subject-name">Física</span>
-                <div class="subject-mini-stats">
-                  <div class="progress-bar" style="width: 100px">
-                    <div class="progress-fill" style="width: 0%"></div>
-                  </div>
-                  <span class="progress-text">0%</span>
-                </div>
-              </div>
-              <div class="subject-row">
-                <span class="subject-icon">🧪</span>
-                <span class="subject-name">Química</span>
-                <div class="subject-mini-stats">
-                  <div class="progress-bar" style="width: 100px">
-                    <div class="progress-fill" style="width: 0%"></div>
-                  </div>
-                  <span class="progress-text">0%</span>
-                </div>
+              <div class="stat">
+                <label>Evaluaciones Completadas</label>
+                <p>0 de 0</p>
               </div>
             </div>
           </div>
@@ -103,51 +79,19 @@
 
         <div class="results-overview">
           <div class="result-card">
-            <h3>Resumen por Materias</h3>
-            <div class="subject-progress-grid">
-              <div class="subject-progress">
-                <div class="subject-header">
-                  <span class="subject-icon">🔢</span>
-                  <span class="subject-name">Matemáticas</span>
-                </div>
-                <div class="progress-stats">
-                  <div class="progress-bar" style="width: 0%">
-                    <span class="progress-value">0%</span>
-                  </div>
-                  <div class="eval-stats">
-                    <span>0 de 0 evaluaciones</span>
-                  </div>
-                </div>
+            <h3>Resumen General</h3>
+            <div class="progress-circle">
+              <div class="progress-value">0%</div>
+              <div class="progress-label">Promedio</div>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-label">Total Evaluaciones</span>
+                <span class="stat-value">0</span>
               </div>
-
-              <div class="subject-progress">
-                <div class="subject-header">
-                  <span class="subject-icon">⚡</span>
-                  <span class="subject-name">Física</span>
-                </div>
-                <div class="progress-stats">
-                  <div class="progress-bar" style="width: 0%">
-                    <span class="progress-value">0%</span>
-                  </div>
-                  <div class="eval-stats">
-                    <span>0 de 0 evaluaciones</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="subject-progress">
-                <div class="subject-header">
-                  <span class="subject-icon">🧪</span>
-                  <span class="subject-name">Química</span>
-                </div>
-                <div class="progress-stats">
-                  <div class="progress-bar" style="width: 0%">
-                    <span class="progress-value">0%</span>
-                  </div>
-                  <div class="eval-stats">
-                    <span>0 de 0 evaluaciones</span>
-                  </div>
-                </div>
+              <div class="stat-item">
+                <span class="stat-label">Completadas</span>
+                <span class="stat-value">0</span>
               </div>
             </div>
           </div>
@@ -161,7 +105,7 @@
         </div>
 
         <div class="detailed-results">
-          <h3>Análisis por Habilidades</h3>
+          <h3>Análisis por Materias</h3>
           <div class="skills-grid">
             <div class="skill-card">
               <div class="skill-header">
@@ -179,6 +123,41 @@
                 </div>
               </div>
             </div>
+
+            <div class="skill-card">
+              <div class="skill-header">
+                <span class="skill-icon">📝</span>
+                <h4>Español</h4>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" style="width: 0%"></div>
+              </div>
+              <span class="skill-percentage">0%</span>
+              <div class="skill-feedback">
+                <h5>Historial de Retroalimentación</h5>
+                <div class="feedback-history empty-state">
+                  <p>No hay retroalimentaciones disponibles</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <div class="skill-header">
+                <span class="skill-icon">🧪</span>
+                <h4>Química</h4>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" style="width: 0%"></div>
+              </div>
+              <span class="skill-percentage">0%</span>
+              <div class="skill-feedback">
+                <h5>Historial de Retroalimentación</h5>
+                <div class="feedback-history empty-state">
+                  <p>No hay retroalimentaciones disponibles</p>
+                </div>
+              </div>
+            </div>
+
             <div class="skill-card">
               <div class="skill-header">
                 <span class="skill-icon">⚡</span>
@@ -195,10 +174,11 @@
                 </div>
               </div>
             </div>
+
             <div class="skill-card">
               <div class="skill-header">
-                <span class="skill-icon">🧪</span>
-                <h4>Química</h4>
+                <span class="skill-icon">🌐</span>
+                <h4>Inglés</h4>
               </div>
               <div class="skill-progress">
                 <div class="progress-bar" style="width: 0%"></div>
@@ -266,11 +246,11 @@
               </div>
             </div>
 
-            <!-- Recomendaciones de Física -->
+            <!-- Recomendaciones de Español -->
             <div class="recommendation-card">
               <div class="recommendation-header">
-                <span class="recommendation-icon">⚡</span>
-                <h3>Física</h3>
+                <span class="recommendation-icon">📝</span>
+                <h3>Español</h3>
               </div>
               <div class="recommendations-list empty-state">
                 <p>No hay recomendaciones disponibles</p>
@@ -283,6 +263,30 @@
               <div class="recommendation-header">
                 <span class="recommendation-icon">🧪</span>
                 <h3>Química</h3>
+              </div>
+              <div class="recommendations-list empty-state">
+                <p>No hay recomendaciones disponibles</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Las recomendaciones se generarán basadas en tu desempeño</p>
+              </div>
+            </div>
+
+            <!-- Recomendaciones de Física -->
+            <div class="recommendation-card">
+              <div class="recommendation-header">
+                <span class="recommendation-icon">⚡</span>
+                <h3>Física</h3>
+              </div>
+              <div class="recommendations-list empty-state">
+                <p>No hay recomendaciones disponibles</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Completa evaluaciones para recibir recomendaciones personalizadas</p>
+              </div>
+            </div>
+
+            <!-- Recomendaciones de Inglés -->
+            <div class="recommendation-card">
+              <div class="recommendation-header">
+                <span class="recommendation-icon">🌐</span>
+                <h3>Inglés</h3>
               </div>
               <div class="recommendations-list empty-state">
                 <p>No hay recomendaciones disponibles</p>
@@ -306,3 +310,4 @@
     </section>
   </main>
 </body>
+</html>
